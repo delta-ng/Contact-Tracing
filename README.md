@@ -37,4 +37,11 @@
 2. Now run ```python tracing_reid.py``` in conda torchreid environment.
 
 ## Results
+<!-- blank line -->
+<figure class="video_container">
+  <video controls="true" allowfullscreen="true">
+    <source src="output.mp4" type="video/mp4">
+  </video>
+</figure>
+<!-- blank line -->
 
