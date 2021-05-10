@@ -24,8 +24,12 @@
     ```
 
 2. Download Yolo File :
+    
     Download all the Yolo-coco data from [here](https://drive.google.com/drive/folders/1YJymHQ9xW9w12slCPS4aq_pfqvsfAbSE?usp=sharing) and place it into the ***yolo-coco*** directory.
 
 3. Download Model :
 
     We are by default using the *osnet_x1_0* model. Download the model from [here](https://drive.google.com/file/d/1tuYY1vQXReEd8N8_npUkc7npPDDmjNCV/view?usp=sharing) and place it inside the ***model*** directory. Alternatively you can also explore other models from [torchreid model zoo](https://kaiyangzhou.github.io/deep-person-reid/MODEL_ZOO)
+
+## Instruction to run
+
