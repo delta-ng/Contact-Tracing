@@ -34,7 +34,7 @@
 ## Instruction to run
 
 1. Create folders ***past_ppl*** and ***Output*** 
-2. Now run ```python testing.py``` in conda torchreid environment.
+2. Now run ```python tracing_reid.py``` in conda torchreid environment.
 
 ## Results
 
