@@ -33,7 +33,7 @@
 
 ## Instruction to run
 
-1. Create a folders ***past_ppl*** and ***Output*** 
+1. Create folders ***past_ppl*** and ***Output*** 
 2. Now run ```python testing.py``` in conda torchreid environment.
 
 ## Results
