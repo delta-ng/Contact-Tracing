@@ -1,49 +1,12 @@
-from torchreid.utils import FeatureExtractor
+# from torchreid.utils import FeatureExtractor
 # from sklearn.metrics.pairwise import cosine_similarity
-from numpy import dot
-from numpy.linalg import norm
+# from numpy import dot
+# from numpy.linalg import norm
 import numpy as np
 import cv2
 import os
 import random
 import math
-from redundancy import *
-
-def reid(img):
-
-    # print("reid")
-
-    past_ppl = './past_ppl'
-    folders = os.listdir(past_ppl)
-
-    for folder in folders:
-        if(folder[0]!='.'):
-            files = os.listdir(past_ppl + '/' + folder)
-            sum = 0
-            image_list = ['./temporaryImg.jpg'] 
-            # Can choose random 5 images and do this.
-            done={}
-            for _ in range(min(10,len(files))):
-                i=random.choice([j for j in range(min(10,len(files)))])
-                while i in done:
-                    i=random.choice([j for j in range(min(10,len(files)))])
-                done[i]=True
-                image_list.append('past_ppl/'+folder+'/'+str(i+1)+'.jpg')
-            features = extractor(image_list)
-            features = np.array(features)
-            for i in range(1,len(features)):
-                sum+=1 if (dot(features[i],features[0])/(norm(features[i])*norm(features[0]))>0.9) else 0
-            p = 100 * float(sum) / float(min(10,len(files)))
-            if( p >= 60 ):
-                person_no = len(files) + 1
-                cv2.imwrite(past_ppl + '/' + folder + '/' + str(person_no) + '.jpg',img)
-                return int(folder)
-
-    l = len(folders)
-    os.makedirs(past_ppl + '/' + str( l )  )
-    cv2.imwrite(past_ppl + '/' + str( l ) + '/1.jpg',img)
-
-    return l
 
 def iou(box1, box2):
     xa = max( box1[1] , box2[1] )
@@ -114,12 +77,6 @@ LABELS = open('yolo-coco/coco.names').read().strip().split("\n")
 weightsPath = 'yolo-coco/yolov3.weights'
 configPath = 'yolo-coco/yolov3.cfg'
 
-extractor = FeatureExtractor(
-        model_name='osnet_x1_0',
-        model_path='model/osnet_ms_d_c.pth.tar',
-        device='cpu'
-    )
-
 net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
 ln = net.getLayerNames()
 ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
@@ -128,11 +85,11 @@ id = []
 prev_id = []
 j = 0
 past_ppl = './past_ppl'
-iou_threshold = 0.80
+iou_threshold = 0.50
 initial = True 
 count = 1
 violation = []
-result=[]
+
 while True: 
     r, img = cap.read()
     if not r:
@@ -162,14 +119,11 @@ while True:
                     done = True
                     break
             if not(done):
-                cv2.imwrite('./temporaryImg.jpg',cropped_img)
-                index=reid(cropped_img)
-                if index>=len(id):
-                    id.append(1)
-                    curr_id.append(len(id)-1)
-                else:
-                    id[index]+=1
-                    curr_id.append(index)
+                os.makedirs(past_ppl + '/' + str( len(id) )  )
+                cv2.imwrite(past_ppl + '/' + str( len(id) )  + '/1.jpg',cropped_img)
+                # cv2.imwrite('./temporaryImg.jpg',cropped_img)
+                id.append(1)
+                curr_id.append(len(id)-1)
     for i in range(len(boxes)):
         centroid=boxes[i][2]
         for j in range(i+1,len(boxes)):
@@ -179,7 +133,6 @@ while True:
                 cv2.rectangle(img,(boxes[i][1][0],boxes[i][1][1]),(boxes[i][1][2],boxes[i][1][3]),(255,255,255),4)
                 cv2.rectangle(img,(boxes[j][1][0],boxes[j][1][1]),(boxes[j][1][2],boxes[j][1][3]),(255,255,255),4)
                 violation.append((curr_id[i],curr_id[j],count))
-                # print(violation)
     cv2.imshow("preview", img)
     cv2.imwrite('Output/'+str(count)+'.jpg',img)
     prev = boxes
@@ -187,12 +140,6 @@ while True:
     key = cv2.waitKey(1)
     initial = False 
     count+=1
-    print(count)
     if key & 0xFF == ord('q'):
         break   
-    if count==20:
-        cc=check_duplicate()
-        for (id1,id2,frame) in violation:
-            result.append((cc[id1],cc[id2],frame))
-        break
-print(result)
+print(violation)
