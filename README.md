@@ -52,7 +52,7 @@
 
 [tracking.py](tracking.py) - Only tracks the peron using intersection of union (IOU).
 
-[tracing_.py](tracking.py) - Tracks , reidentifies and also reduces redundancy using IOU and ReID.  
+[tracing_reid.py](tracing_reid.py) - Tracks , reidentifies and also reduces redundancy using IOU and ReID.  
 
 ## Results
 ### Video :
