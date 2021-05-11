@@ -21,8 +21,12 @@ def reid(img):
             sum = 0
             image_list = ['./temporaryImg.jpg'] 
             # Can choose random 5 images and do this.
+            done={}
             for _ in range(min(10,len(files))):
                 i=random.choice([j for j in range(min(10,len(files)))])
+                while i in done:
+                    i=random.choice([j for j in range(min(10,len(files)))])
+                done[i]=True
                 image_list.append('past_ppl/'+folder+'/'+str(i+1)+'.jpg')
             features = extractor(image_list)
             features = np.array(features)
@@ -40,8 +44,42 @@ def reid(img):
 
     return l
   
+# def redundancy():
 
-# def saveimg():
+#     past_ppl = './past_ppl'
+#     folders = os.listdir(past_ppl)
+#     image_list = []
+#     folder_no = []
+
+#     for folder in folders:
+#         if(folder[0]!='.'):
+#             files = os.listdir(past_ppl + '/' + folder)
+#             # Can choose random 5 images and do this.
+#             done = {}
+#             for _ in range(min(10,len(files))):
+#                 folder_no.append(int(folder))
+#                 i=random.choice([j for j in range(min(10,len(files)))])
+#                 while i in done:
+#                     i=random.choice([j for j in range(min(10,len(files)))])
+#                 done[i]=True
+#                 image_list.append('past_ppl/'+folder+'/'+str(i+1)+'.jpg')
+#     features = extractor(image_list)
+#     features = np.array(features)
+#     match=[[0 for i in range(len(folders))] for i in range(len(folders))]
+#     for i in range(len(features)):
+#         for j in range(len(features)):
+#             dist = dot(features[i],features[j])/(norm(features[i])*norm(features[j]))
+#             match[folder_no[i]][folder_no[j]]+=1 if (dist >0.9) else -1
+#     print(match)
+#     for i in range(len(match)-1,-1,-1):
+#         max_match=[0,-1] # [ Max value , Max index ]
+#         for j in range(len(match[0]),i):
+#                 total_match=match[i][j]
+#                 if total_match>max_match[0]:
+#                     max_match=[total_match,j]
+#         if max_match[0]>0:
+#             os.rename('past_ppl/'+str(i),'past_ppl/'+str(max_match[1])+' match')
+#     return
 
 def iou(box1, box2):
     xa = max( box1[1] , box2[1] )
@@ -186,6 +224,9 @@ while True:
     count+=1
     if key & 0xFF == ord('q'):
         break   
+    # if count==20:
+    #     redundancy()
+    #     break
 
 # Process violation
 # for i in violation:
