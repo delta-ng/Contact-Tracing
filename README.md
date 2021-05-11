@@ -44,6 +44,16 @@
 1. Create folders ***past_ppl*** and ***Output*** 
 2. Now run ```python tracing_reid.py``` in conda torchreid environment.
 
+## File system
+
+[ploting.py](ploting.py) - Contains definition of plotting tool required for generation of network graphs.
+
+[redundancy.py](redundancy.py) - Reduces redundancy by clustering similar entity using ReID Models.   
+
+[tracking.py](tracking.py) - Only tracks the peron using intersection of union (IOU).
+
+[tracing_.py](tracking.py) - Tracks , reidentifies and also reduces redundancy using IOU and ReID.  
+
 ## Results
 ### Video :
 <!-- blank line -->
@@ -57,6 +67,9 @@
 # Contributors:
 
 <a href="https://github.com/delta-ng"> Prakash R </a>
+
 <a href="https://github.com/shwetapardeshi1"> Shweta Pardeshi </a>
+
 <a href="https://github.com/jethva-utsav"> Jethva Utsav </a>
+
 <a href="https://github.com/madhav-tiwari"> Madhav Tiwari </a>
