@@ -1,5 +1,8 @@
 # Contact-Tracing
 
+## Problem Statement:
+Our problem statement is to identify the people who have violated the social distancing norms and with whom they have interacted. 
+
 ## Installation
 
 1. Installing torchreid : 
