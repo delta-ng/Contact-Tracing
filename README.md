@@ -51,7 +51,7 @@
 <!-- blank line -->
 ### Graph:
 <!-- blank line -->
-![](output_graph.gif)
+<img src="output_graph.gif" alt="drawing" width="200"/>
 <!-- blank line -->
 
 # Contributors:
