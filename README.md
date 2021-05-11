@@ -54,3 +54,8 @@
 ![](output_graph.gif)
 <!-- blank line -->
 
+##Coding references
+--https://github.com/KaiyangZhou/deep-person-reid.git
+--https://github.com/Nirvan101/Person-Re-identification
+--https://github.com/thomaspark-pkj/person-reid.git
+--https://www.geeksforgeeks.org/connected-components-in-an-undirected-graph/
