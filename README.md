@@ -37,7 +37,12 @@
 2. Now run ```python tracing_reid.py``` in conda torchreid environment.
 
 ## Results
+### Video :
 <!-- blank line -->
 ![](output.gif)
+<!-- blank line -->
+### Graph:
+<!-- blank line -->
+![](output_graph.gif)
 <!-- blank line -->
 
