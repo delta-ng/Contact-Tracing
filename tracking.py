@@ -7,6 +7,26 @@ import cv2
 import os
 import random
 import math
+import networkx as nx
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+
+def plot(l):
+    df = pd.DataFrame(l, columns=['source', 'target', 'frame'])
+    df['weight'] = 1
+    fr = df.frame.unique()
+    for i in range(len(fr)):
+        G=0
+        a = df[df['frame']==fr[i]]
+        a.reset_index()
+        print(a)
+        G = nx.from_pandas_edgelist(a,source='source',target='target',edge_attr='weight')
+        nx.draw(G, with_labels=True)
+        plt.tight_layout()
+        plt.savefig("frame"+str(i)+".png", format="PNG")
+        plt.clf()
 
 def iou(box1, box2):
     xa = max( box1[1] , box2[1] )

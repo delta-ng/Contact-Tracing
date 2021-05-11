@@ -1,3 +1,4 @@
+#%%
 from torchreid.utils import FeatureExtractor
 # from sklearn.metrics.pairwise import cosine_similarity
 from numpy import dot
@@ -5,9 +6,13 @@ from numpy.linalg import norm
 import numpy as np
 import cv2
 import os
+import networkx as nx
+import pandas as pd
+import matplotlib.pyplot as plt
 import random
 import math
 from redundancy import *
+from ploting import *
 
 def reid(img):
 
@@ -190,9 +195,12 @@ while True:
     print(count)
     if key & 0xFF == ord('q'):
         break   
-    if count==20:
-        cc=check_duplicate()
-        for (id1,id2,frame) in violation:
-            result.append((cc[id1],cc[id2],frame))
-        break
+cc=check_duplicate()
+for (id1,id2,frame) in violation:
+    result.append((cc[id1],cc[id2],frame))
 print(result)
+#%%
+ploting(result)
+print(result)
+
+# %%
