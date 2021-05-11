@@ -54,7 +54,7 @@
 ![](output_graph.gif)
 <!-- blank line -->
 
-##Coding references
+## Coding references
 1. https://github.com/KaiyangZhou/deep-person-reid.git
 2. https://github.com/Nirvan101/Person-Re-identification
 3. https://github.com/thomaspark-pkj/person-reid.git
