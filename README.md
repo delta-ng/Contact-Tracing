@@ -56,7 +56,7 @@
 
 # Contributors:
 
-- <a href="https://github.com/delta-ng"> Prakash R </a>
-- <a href="https://github.com/shwetapardeshi1"> Shweta Pardeshi </a>
-- <a href="https://github.com/jethva-utsav"> Jethva Utsav </a>
-- <a href="https://github.com/madhav-tiwari"> Madhav Tiwari </a>
+<a href="https://github.com/delta-ng"> Prakash R </a>
+<a href="https://github.com/shwetapardeshi1"> Shweta Pardeshi </a>
+<a href="https://github.com/jethva-utsav"> Jethva Utsav </a>
+<a href="https://github.com/madhav-tiwari"> Madhav Tiwari </a>
