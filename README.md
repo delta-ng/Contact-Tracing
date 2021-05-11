@@ -55,7 +55,7 @@
 <!-- blank line -->
 
 ##Coding references
---https://github.com/KaiyangZhou/deep-person-reid.git
---https://github.com/Nirvan101/Person-Re-identification
---https://github.com/thomaspark-pkj/person-reid.git
---https://www.geeksforgeeks.org/connected-components-in-an-undirected-graph/
+1. https://github.com/KaiyangZhou/deep-person-reid.git
+2. https://github.com/Nirvan101/Person-Re-identification
+3. https://github.com/thomaspark-pkj/person-reid.git
+4. https://www.geeksforgeeks.org/connected-components-in-an-undirected-graph/
